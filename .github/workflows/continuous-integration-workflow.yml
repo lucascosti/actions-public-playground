@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       # This step uses the hello-world-action stored in this workflow's repository.
-      - uses: ./hello-world-action
+      - uses: actions/hello-world-javascript-action@v1
         with:
-          who-to-greet: Octocat
+          who-to-greet: Lucas pukus
         id: hello
       # This step prints the time.
       - run: echo The time was ${{ steps.hello.outputs.time }}
