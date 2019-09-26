@@ -11,9 +11,9 @@ jobs:
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Hello world
-        uses: nohomers/no-homers-hello-world-docker-action@master
+        uses: nohomers/no-homers-hello-world-docker-action@exit-error-failure-test
         with:
-          who-to-greet: 'Homer Simpson'
+          who-to-greet: 'Lucas'
         id: hello
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
