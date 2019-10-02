@@ -1,1 +1,1 @@
-needs triage: .github/*
+needs triage: '*'
