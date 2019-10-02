@@ -1,8 +1,6 @@
 name: Create issue on commit
-on:
-  push:
-    branches:
-      - 10679_GITHUB_TOKEN_test
+on: 
+- push
 jobs:
   create_commit:
     runs-on: ubuntu-latest
@@ -15,5 +13,5 @@ jobs:
         --header 'content-type: application/json' \
         --data '{
           "title": "Automated issue for commit: ${{ github.sha }}", 
-          "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_."
+          "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_." 
           }'
