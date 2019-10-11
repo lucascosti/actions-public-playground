@@ -20,7 +20,7 @@ jobs:
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
         
       - name: Create a dir and a file
-        run: mkdir testdir && touch testfile
+        run: mkdir testdir && cd testdir && touch testfile
         
       - name: List dir contents with working-directory
         working-directory: ./testdir
