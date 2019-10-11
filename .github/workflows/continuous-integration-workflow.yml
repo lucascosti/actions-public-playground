@@ -20,9 +20,16 @@ jobs:
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
         
       - name: Create a dir and a file
-        run: mkdir testdir && cd testdir && touch testfile
+        run: mkdir temp && cd temp && touch testfile
         
       - name: List dir contents with working-directory
-        working-directory: ./testdir
+        working-directory: ./temp
         run: ls
         
+      - name: Clean temp directory
+        run: rm -rf *
+        working-directory: ./temp
+      
+      - name: After delete ls
+        working-directory: ./temp
+        run: ls
