@@ -19,9 +19,4 @@ jobs:
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
       - name: Echo runner context info
-        run: |
-          for i in "${!${{ runner.* }}[@]}"
-          do
-            echo "key  : $i"
-            echo "value: ${array[$i]}"
-          done
+        run: echo "${{ runner }}" | jq '.'
