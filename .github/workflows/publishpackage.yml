@@ -12,6 +12,9 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
     - run: npm install
-    - run: npm publish --access public
+    - run: npm test
+      env:
+        CI: true
+    - run: echo THIS WILL PUBLISH
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

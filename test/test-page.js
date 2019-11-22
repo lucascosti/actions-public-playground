@@ -15,7 +15,7 @@ it('Main page content', function(done) {
       .end((err, res) => {
             console.log(err); // outputs null
             console.log(res.body) // {}
-            res.text.should.be.eql('Hello World! Everything is awesome!!'); // passes test
+            res.text.should.be.eql('Hello World! Everything is awesome!!!'); // passes test
             done();
         });
 });
