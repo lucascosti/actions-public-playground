@@ -10,11 +10,9 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-        registry-url: 'https://registry.npmjs.org'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: '@octocat'
     - run: npm install
-    - run: npm test
+    - run: npm publish
       env:
-        CI: true
-    - run: echo THIS WILL PUBLISH
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
