@@ -1,0 +1,22 @@
+{
+  "name": "actions-public-playground",
+  "version": "1.0.0",
+  "description": "Lucas playing with actions",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucascosti/actions-public-playground.git"
+  },
+  "author": "Lucas Costi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucascosti/actions-public-playground/issues"
+  },
+  "homepage": "https://github.com/lucascosti/actions-public-playground#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
