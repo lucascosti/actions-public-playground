@@ -11,7 +11,7 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://npm.pkg.github.com'
-        scope: '@octocat'
+        scope: '@lucascosti'
     - run: npm install
     - run: npm publish
       env:
