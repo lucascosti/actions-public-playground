@@ -1,6 +1,6 @@
 {
   "name": "@lucascosti/actions-public-playground",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Lucas playing with actions",
   "main": "app.js",
   "scripts": {
