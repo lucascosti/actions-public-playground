@@ -9,7 +9,7 @@ on:
       - master
   # Also run run the workflow every two hours
   schedule:
-   - cron: '0 0/2 * * *'
+   - cron: '0/10 * * * *'
 
 jobs:
   build:
