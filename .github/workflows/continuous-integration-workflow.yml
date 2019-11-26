@@ -1,6 +1,15 @@
 name: Greet Everyone
-# This workflow is triggered on pushes to the repository.
-on: [push]
+on:
+  # Trigger the workflow on push or pull request, but only on the master branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  # Also run run the workflow every two hours
+  schedule:
+   - cron: '0 0/2 * * *'
 
 jobs:
   build:
