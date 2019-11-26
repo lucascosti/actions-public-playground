@@ -1,16 +1,5 @@
 name: Greet Everyone
-on:
-  # Trigger the workflow on push or pull request, but only on the master branch
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-  # Also run run the workflow every two hours
-  schedule:
-   - cron: '0/10 * * * *'
-
+on: [push, pull_request]
 jobs:
   build:
     # Job name is Greeting
