@@ -1,18 +1,5 @@
 name: Greet Everyone
-on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
-  # Also trigger on the page_build, and release created events
-  page_build:
-  release: # This event's configuration does not affect the page_build event above
-    types:
-      - created
+on: [push, pull_request]
 jobs:
   build:
     # Job name is Greeting
