@@ -1,5 +1,18 @@
-name: Local docker test
-on: [push, pull_request]
+name: Greet Everyone
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  # Also trigger on the page_build, and release created events
+  page_build:
+  release: # This event's configuration does not affect the page_build event above
+    types:
+      - created
 jobs:
   build:
     # Job name is Greeting
@@ -7,9 +20,9 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: local docker Hello world
-        uses: ./.github/actions/local_docker_action
+      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
+      - name: Hello world
+        uses: actions/hello-world-javascript-action@v1
         with:
           who-to-greet: 'Mona the Octocat'
         id: hello
