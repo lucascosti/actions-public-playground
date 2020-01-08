@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/lucascosti/actions-public-playground/issues"
   },
-  "homepage": "https://github.com/lucascosti/actions-public-playground#readme"
+  "homepage": "https://github.com/lucascosti/actions-public-playground#readme",
+  "dependencies": {
+    "redis": "^2.8.0"
+  }
 }
