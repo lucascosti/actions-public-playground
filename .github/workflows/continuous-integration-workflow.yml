@@ -2,7 +2,7 @@ name: Greeting
 on: 
   push:
   pull_request:
-    branches: master 
+    branches: 11392_branch_ignore 
 jobs:
   build:
     # Job name is Greeting
