@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/lucascosti/actions-public-playground#readme",
   "dependencies": {
+    "pg": "^7.17.1",
     "redis": "^2.8.0"
   }
 }
