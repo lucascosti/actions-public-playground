@@ -14,11 +14,14 @@ redisClient.on("error", function(err) {
 
 // Sets the key "octocat" to a value of "Mona the octocat"
 redisClient.set("octocat", "Mona the Octocat", redis.print);
-// Sets a key to "octocat", field to "species", and "value" to "Cat"
+// Sets a key to "octocat", field to "species", and "value" to "Cat and Octopus"
 redisClient.hset("species", "octocat", "Cat and Octopus", redis.print);
+// Sets a key to "octocat", field to "species", and "value" to "Dinosaur and Octopus"
+redisClient.hset("species", "dinocat", "Dinosaur and Octopus", redis.print);
 // Changes the "octocat" key's field and value
 redisClient.hset(["species", "robotocat", "Cat and Robot"], redis.print);
 // Gets all fields in "species" key
+
 redisClient.hkeys("species", function (err, replies) {
     console.log(replies.length + " replies:");
     replies.forEach(function (reply, i) {
