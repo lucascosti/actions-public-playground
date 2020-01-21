@@ -1,7 +1,5 @@
 name: Greeting
-on:
-  pull_request:
-    tags: awesome_tag
+on: pull_request
 jobs:
   build:
     # Job name is Greeting
