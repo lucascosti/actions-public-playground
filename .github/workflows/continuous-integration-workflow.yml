@@ -1,20 +1,17 @@
 name: Greeting
 on: [push, pull_request]
 env:
-    test_var: lucas is awesome
-    workflow_var: this was defined at the workflow level
+    my_env: this was defined at the workflow level
 jobs:
   build:
     # Job name is Greeting
     name: Greeting
     env:
-      test_var: lucas is great
-      job_var: this was defined at the job level
+      my_env: this was defined at the job level
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
       - name: Can I use a context in run?
         env:
-          test_var: lucas is just average
-          step_var: this was defined at the step level
-        run: echo 'The test_var value in the env context is ${{ env.test_var }}.' && echo The test_var value as a regular variable is $test_var
+          my_env: this was defined at the step level
+        run: echo 'The my_env value in the env context is ${{ env.my_env }}.' && echo The my_env value as a regular variable is $my_env
