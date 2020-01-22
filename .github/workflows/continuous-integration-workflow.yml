@@ -35,4 +35,4 @@ jobs:
           STEPS_CONTEXT: ${{ toJson(steps) }}
           test_var: lucas is just average
           step_var: this was defined at the step level
-          run: echo "$STEPS_CONTEXT"
+        run: echo "$STEPS_CONTEXT"
