@@ -2,14 +2,14 @@ name: Greeting
 on: [push, pull_request]
 env:
     test_var: lucas is awesome
-    workflow_var: this was definied at the workflow level
+    workflow_var: this was defined at the workflow level
 jobs:
   build:
     # Job name is Greeting
     name: Greeting
     env:
       test_var: lucas is great
-      job_var: this was definied at the job level
+      job_var: this was defined at the job level
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
@@ -26,4 +26,4 @@ jobs:
         env:
           test_var: lucas is just average
           step_var: this was defined at the step level
-        run: echo "$workflow_var" & echo "$job_var" & echo "$step_var" & echo "$test_var"
+        run: echo "$workflow_var" && echo "$job_var" && echo "$step_var" && echo "$test_var"
