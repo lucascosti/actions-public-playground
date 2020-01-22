@@ -1,9 +1,15 @@
 name: Greeting
 on: [push, pull_request]
+env:
+    test_var: lucas is awesome
+    workflow_var: this was definied at the workflow level
 jobs:
   build:
     # Job name is Greeting
     name: Greeting
+    env:
+      test_var: lucas is great
+      job_var: this was definied at the job level
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
@@ -16,3 +22,17 @@ jobs:
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+          test_var: lucas is just average
+          step_var: this was defined at the step level
+          run: echo "$STEPS_CONTEXT"
