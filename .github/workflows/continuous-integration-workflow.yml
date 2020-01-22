@@ -22,9 +22,8 @@ jobs:
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-      - name: Echo the env context
+      - name: Echo the envs
         env:
-          ENV_CONTEXT: ${{ toJson(env) }}
           test_var: lucas is just average
           step_var: this was defined at the step level
-        run: echo "$ENV_CONTEXT"
+        run: echo "$workflow_var" & echo "$job_var" & echo "$step_var" & echo "$test_var"
