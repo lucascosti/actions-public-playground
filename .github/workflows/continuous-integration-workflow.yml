@@ -26,4 +26,4 @@ jobs:
         env:
           test_var: lucas is just average
           step_var: this was defined at the step level
-        run: echo "this is using envs WITHOUT the context" && "$workflow_var" && echo "$job_var" && echo "$step_var" && echo "$test_var"
+        run: echo "this is using envs WITHOUT the context" && echo "$workflow_var" && echo "$job_var" && echo "$step_var" && echo "$test_var"
