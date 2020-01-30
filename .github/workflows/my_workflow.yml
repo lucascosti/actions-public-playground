@@ -17,7 +17,7 @@ jobs:
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
       - name: Show run_id and run_number
-        run: echo 'run_id is ${{ github.run_id }}, run_number is ${{ github.run_number }}'
+        run: echo 'run_id is $GITHUB_RUN_ID, run_number is $GITHUB_RUN_NUMBER'
       - name: Dump environment variables
         run: printenv
         
