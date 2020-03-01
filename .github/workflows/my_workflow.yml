@@ -17,4 +17,6 @@ jobs:
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
       - name: Join test
-        run: echo ${{ join(['this', 'is', 'an', 'array']) }}
+        run: echo '$jointest'
+        env: 
+          jointest: ${{ join(['this', 'is', 'an', 'array']) }}
