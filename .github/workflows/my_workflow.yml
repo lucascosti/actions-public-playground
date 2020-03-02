@@ -13,4 +13,6 @@ jobs:
         run: echo ${{ contains('Hello world', 'llo') }}
       - name: Contains test array
         run: echo ${{ contains(github.event.commits.*.*.username, 'lucascosti') }}
+      - name: Contains test array2
+        run: echo ${{ contains(github.event.commits.*.*.username, 'frostysonic') }}
           
