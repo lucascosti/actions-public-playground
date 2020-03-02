@@ -15,6 +15,8 @@ jobs:
       postgres:
         # Docker Hub image
         image: postgres
+        env:
+          POSTGRES_PASSWORD: postgres
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
