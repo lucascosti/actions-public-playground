@@ -20,7 +20,7 @@ jobs:
     name: Second job
     runs-on: ubuntu-latest
     steps:
-      - run: echo "this is a second job"
+      - run: echo "fail" && exit 1
   job3:
     name: Third job
     runs-on: windows-latest
