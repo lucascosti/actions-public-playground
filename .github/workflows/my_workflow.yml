@@ -22,7 +22,7 @@ jobs:
     name: job 2
     runs-on: [ubuntu-latest]
     steps:
-      - run: "I am job 2"
+      - run: echo "I am job 2"
   success:
     name: success job
     runs-on: [ubuntu-latest]
