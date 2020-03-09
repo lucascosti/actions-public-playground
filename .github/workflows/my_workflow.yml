@@ -8,11 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+      - name: step 1
+        run: echo "this might fail!" && exit 1
+      - name: step 2
+        run: echo "this should work!"
+      - name: step 3 - success
+        if: success()
+        run: echo "🙌 the job worked!"
+      - name: step 3 - failure
+        if: failure()
+        run: echo "🤦 the job failed!"
