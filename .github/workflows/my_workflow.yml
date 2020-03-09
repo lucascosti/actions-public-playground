@@ -3,7 +3,7 @@ on: [push, pull_request]
 jobs:
   build:
     # Job name is Greeting
-    name: Greeting
+    name: Job 1
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
@@ -18,3 +18,21 @@ jobs:
       - name: step 3 - failure
         if: failure()
         run: echo "🤦 the job failed!"
+  build2:
+    name: job 2
+    runs-on: [ubuntu-latest]
+    steps:
+      - run: "I am job 2"
+  success:
+    name: success job
+    runs-on: [ubuntu-latest]
+    if: success()
+    steps:
+      - run: echo "the workflow succeeded!!"
+  fail:
+    name: fail job
+    runs-on: [ubuntu-latest]
+    if: failure()
+    steps:
+      - run: "The workflow failed!"
+    
