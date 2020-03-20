@@ -9,5 +9,5 @@ jobs:
     env:
       GITHUB_ACTOR: octocat 
     steps:
-      - run: echo "Envs are usually a manually-defined environment variable: ${{ env.GITHUB_ACTOR }}"
-      - run: echo "This is an automatic GitHub Actions-provided context: ${{ github.actor }}"
+      - run: echo "Envs are usually a manually-defined environment variable:" ${{ env.GITHUB_ACTOR }}
+      - run: echo "This is an automatic GitHub Actions-provided context:" ${{ github.actor }}"
