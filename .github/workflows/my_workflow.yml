@@ -1,9 +1,8 @@
 name: Greeting workflow
 on: [push, pull_request]
 jobs:
-  run_command:
-    runs-on: windows-latest
+  conditional:
+    runs-on: ubuntu-latest
     steps:
-    - run: echo "This step runs in PowerShell on Windows by default"
-    - run: echo "This step runs in CMD on Windows explicitly"
-      shell: cmd
+    - run: echo "This step runs with str equals 'ABC' and num equals 123"
+      if: str == 'ABC' && num == 123
