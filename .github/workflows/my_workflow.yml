@@ -1,5 +1,3 @@
-name: Greeting workflow
-on: [push, pull_request]
 jobs:
   initial:
     runs-on: ubuntu-latest
@@ -17,6 +15,6 @@ jobs:
     - run: echo "This job will run after the initial job, in parallel with fanout1."
   fan_in:
     runs-on: ubuntu-latest
-    needs: [fanout1, fanout2]
+    needs: [fan_out1, fan_out2]
     steps:
     - run: echo "This job will run after fanout1 and fanout2 have finished."
