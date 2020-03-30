@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "This step runs with str equals 'ABC' and num equals 123"
-      if: str == 'ABC' && num == 123
+      if: env.str == 'ABC' && env.num == 123
