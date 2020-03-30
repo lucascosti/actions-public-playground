@@ -1,13 +1,9 @@
 name: Greeting workflow
 on: [push, pull_request]
 jobs:
-  scripts:
+  run_command:
     runs-on: windows-latest
     steps:
-    - run: echo "This step runs in the default shell"
-    - run: echo "This step runs in bash"
-      shell: bash
-    - run: Write-Host "This step runs in PowerShell Core"
-      shell: pwsh
-    - run: Write-Host "This step runs in PowerShell"
-      shell: powershell
+    - run: echo "This step runs in PowerShell on Windows by default"
+    - run: echo "This step runs in CMD on Windows explicitly"
+      shell: cmd
