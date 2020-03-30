@@ -1,5 +1,8 @@
 name: Greeting workflow
 on: [push, pull_request]
+env:
+  str: 'ABC'
+  num: 123  
 jobs:
   conditional:
     runs-on: ubuntu-latest
