@@ -14,7 +14,8 @@ jobs:
     needs: job1
     steps:
       ## Print out hello_world
-      - run: |
+      - id: step1
+        run: |
           echo ${{ needs.job1.outputs.test }}
       - name: Dump GitHub context
         env:
@@ -26,7 +27,7 @@ jobs:
         run: echo "$JOB_CONTEXT"
       - name: Dump steps context
         env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
+          STEPS_CONTEXT: ${{ toJson(steps.step1) }}
         run: echo "$STEPS_CONTEXT"
       - name: Dump runner context
         env:
