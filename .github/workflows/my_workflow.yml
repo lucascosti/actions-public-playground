@@ -1,9 +1,18 @@
 name: build
 on: push
 jobs:
-  job1:
-    runs-on: ${{ matrix.os }}
-    strategy: ${{ fromJson({\"matrix\":{\"os\":{[macos-latest, windows-latest, ubuntu-18.04]}}})
+  one:
+    runs-on: [ubuntu-latest]
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
-      - run: echo "hello"
-     
+    - id: set-matrix
+      run: |
+        echo "::set-output name=matrix::{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}"
+  two:
+    needs: [one]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{fromJson(needs.one.outputs.matrix)}}
+    steps:
+    - uses: actions/checkout@v2
