@@ -1,19 +1,9 @@
 name: build
 on: push
-defaults:
-  run:
-    shell: pwsh
+env: ${{ fromJson("var1": "test", "var2": "test2") }}
 jobs:
   job1:
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-latest]
     steps:
-    - id: step1
-      run: echo $0
-  job2:
-    defaults:
-      run:
-        shell: sh
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-    - run: echo $0
+      - run: echo ${{ env.var1 }}
+     
