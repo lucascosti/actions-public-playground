@@ -1,9 +1,9 @@
 name: build
 on: push
-env: ${{ fromJson("var1": "test", "var2": "test2") }}
 jobs:
   job1:
-    runs-on: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    strategy: ${{ fromJson({matrix:{os:{[macos-latest, windows-latest, ubuntu-18.04]}}})
     steps:
-      - run: echo ${{ env.var1 }}
+      - run: echo "hello"
      
