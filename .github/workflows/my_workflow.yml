@@ -3,7 +3,7 @@ on: push
 jobs:
   job1:
     runs-on: ${{ matrix.os }}
-    strategy: ${{ fromJson({]"matrix\":{\"os\":{[macos-latest, windows-latest, ubuntu-18.04]}}})
+    strategy: ${{ fromJson({\"matrix\":{\"os\":{[macos-latest, windows-latest, ubuntu-18.04]}}})
     steps:
       - run: echo "hello"
      
