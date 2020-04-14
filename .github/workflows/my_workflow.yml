@@ -13,6 +13,6 @@ jobs:
     needs: [one]
     runs-on: ubuntu-latest
     strategy:
-      matrix: ${{fromJson({\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]})}}
+      matrix: ${{fromJson("{\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}")}}
     steps:
     - uses: actions/checkout@v2
