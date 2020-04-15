@@ -8,6 +8,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest]
         node: [10, 12, 13]
+        continue-on-error: [false]
         include:
           - node: 13
             continue-on-error: true  
