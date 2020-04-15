@@ -9,6 +9,7 @@ jobs:
       matrix:
         node: [11, 12]
         os: [macos-latest, windows-latest, ubuntu-18.04]
+        continue-on-error: [false]
         include:
           - node: 13
             os: ubuntu-18.04
