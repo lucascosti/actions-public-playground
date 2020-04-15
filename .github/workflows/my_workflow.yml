@@ -10,6 +10,6 @@ jobs:
         include:
           - node: 13
             os: ubuntu-18.04
-            experimental: true
+            continue-on-error: true
     steps:
       - run: if [[ ${{ matrix.node }} = 13 ]]; then return 1; fi
