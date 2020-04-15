@@ -15,4 +15,4 @@ jobs:
             os: ubuntu-18.04
             experimental: true
     steps:
-      - run: if [[ 13 = 13 ]]; then return 1; fi
+      - run: if [[ ${{ matrix.node }} = 13 ]]; then return 1; fi
