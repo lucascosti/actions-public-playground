@@ -3,13 +3,13 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ${{ matrix.os }}
+    continue-on-error: ${{ matrix.continue-on-error }}
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
         node: [10, 12, 13]
         include:
           - node: 13
-            continue-on-error: true
-    continue-on-error: ${{ matrix.continue-on-error }}
+            continue-on-error: true  
     steps:
       - run: if [[ ${{ matrix.node }} = 13 ]]; then return 1; fi
