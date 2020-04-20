@@ -1,7 +1,7 @@
 name: Greeting workflow
 on: [push]
 env:
-  test: true 
+  FREEZE: ${{ secrets.FREEZE }} 
 
 jobs:
   update_graphql_files:
@@ -12,5 +12,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "no freeze detected, running as normal"
-        if: env.test != 'true'
+        if: env.FREEZE != 'true'
     
