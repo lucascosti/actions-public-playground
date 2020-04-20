@@ -7,7 +7,7 @@ jobs:
   update_graphql_files:
     # This workflow runs every hour. To temporarily disable it (for example, during
     # a docs freeze), add a secret to the help-docs repository called `FREEZE` with
-    # a value of `true`. To reenable GraphQL updates, delete the secret.
+    # a value of `true`. To reenable GraphQL updates, delete the secret..
     
     runs-on: ubuntu-latest
     steps:
