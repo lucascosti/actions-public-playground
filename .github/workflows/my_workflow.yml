@@ -1,13 +1,13 @@
 name: Greeting workflow
 on: [push]
+env:
+  FREEZE: ${{ secrets.FREEZE }}
 
 jobs:
   update_graphql_files:
     # This workflow runs every hour. To temporarily disable it (for example, during
     # a docs freeze), add a secret to the help-docs repository called `FREEZE` with
     # a value of `true`. To reenable GraphQL updates, delete the secret.
-    env:
-      FREEZE: ${{ secrets.freeze }}
     if: ${{ env.FREEZE != 'true' }}
     runs-on: ubuntu-latest
     steps:
