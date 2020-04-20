@@ -1,18 +1,15 @@
 name: Greeting workflow
-on: [push, pull_request]
+on: [push]
+
 jobs:
-  build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
+  update_graphql_files:
+    # This workflow runs every hour. To temporarily disable it (for example, during
+    # a docs freeze), add a secret to the help-docs repository called `FREEZE` with
+    # a value of `true`. To reenable GraphQL updates, delete the secret.
+    env:
+      FREEZE: ${{ secrets.freeze }}
+    if: ${{ env.FREEZE != 'true' }}
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+      - run: echo "no freeze detected, running as normal"
+    
