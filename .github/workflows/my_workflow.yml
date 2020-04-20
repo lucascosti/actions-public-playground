@@ -5,6 +5,7 @@ env:
 
 jobs:
   update_graphql_files:
+    name: Update graphql
     if: env.FREEZE != 'true'
     # This workflow runs every hour. To temporarily disable it (for example, during
     # a docs freeze), add a secret to the help-docs repository called `FREEZE` with
