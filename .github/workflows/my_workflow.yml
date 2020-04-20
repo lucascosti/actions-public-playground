@@ -5,12 +5,12 @@ env:
 
 jobs:
   update_graphql_files:
+    if: env.FREEZE != 'true'
     # This workflow runs every hour. To temporarily disable it (for example, during
     # a docs freeze), add a secret to the help-docs repository called `FREEZE` with
     # a value of `true`. To reenable GraphQL updates, delete the secret..
-    
     runs-on: ubuntu-latest
     steps:
       - run: echo "no freeze detected, running as normal"
-        if: env.FREEZE != 'true'
+        
     
