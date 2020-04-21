@@ -1,7 +1,7 @@
 name: Greeting workflow
 on: [push]
 env:
-  FREEZE: ${{ secrets.FREEZE }} 
+  FREEZE: true 
 
 jobs:
   update_graphql_files:
