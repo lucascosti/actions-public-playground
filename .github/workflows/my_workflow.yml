@@ -2,8 +2,9 @@ name: Greeting workflow
 on: [push, pull_request]
 jobs:
   skippy:
-    if:  true == false
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'This should never run'
+      - run: |
+          sleep 30
+          echo 'This completed!' 
     
