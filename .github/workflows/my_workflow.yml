@@ -18,3 +18,4 @@ jobs:
         run: |
           echo "::debug file=README.md,line=4::This is a fancy debug message!"
           echo 'The time was ${{ steps.hello.outputs.time }}.'
+          echo "::error file=README.md,line=4::This is a fancy debug message!"
