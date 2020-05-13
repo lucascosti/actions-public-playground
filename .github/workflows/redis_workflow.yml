@@ -44,3 +44,7 @@ jobs:
           REDIS_HOST: localhost
           # The default Redis port
           REDIS_PORT: 6379
+      - name: Dump the job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT" 
