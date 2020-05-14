@@ -17,5 +17,5 @@ jobs:
       - name: Echo the greeting's time
         run: |
           echo 'The time was ${{ steps.hello.outputs.time }}.'
-      - name: external docker debug test
+      - name: external docker debug test # now contains a warning.
         uses: nohomers/no-homers-local-docker-action/.github/actions/local-hello-world@debug_log_test
