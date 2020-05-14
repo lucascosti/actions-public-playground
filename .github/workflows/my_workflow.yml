@@ -16,6 +16,6 @@ jobs:
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
         run: |
-          echo "::debug file=README.md,line=4::This is a fancy debug message!"
           echo 'The time was ${{ steps.hello.outputs.time }}.'
-          echo "::error file=README.md,line=4::This is a fancy debug message!"
+      - name: external docker debug test
+        uses: nohomers/no-homers-local-docker-action/.github/actions/local-hello-world@debug_log_test
