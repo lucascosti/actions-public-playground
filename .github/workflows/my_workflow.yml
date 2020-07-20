@@ -5,14 +5,22 @@ jobs:
     # Job name is Greeting
     name: Greeting
     # This job runs on Linux
+    services:
+      nginx:
+        image: nginx
+        # Map port 8080 on the Docker host to port 80 on the nginx container
+        ports:
+          - 8080:80
+      redis:
+        image: redis
+        # Map TCP port 6379 on Docker host to a random free port on the Redis container
+        ports:
+          - 6379/tcp
+
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
       # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+      - name: Echo the nginx container port
+        run: echo 'For the docker host port 8080, the internal nginx container port is ${{ job.services.nginx.ports['8080'] }}.'
+      - name: Echo the redis container port
+        run: echo 'For the docker host port 6379, the internal redis container port is ${{ job.services.redis.ports['6379'] }}.'
