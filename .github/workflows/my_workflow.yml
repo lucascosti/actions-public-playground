@@ -19,8 +19,7 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the nginx container port
-        run: echo 'For the docker host port 8080, the internal nginx container port is ${{ job.services.nginx.ports['80'] }}.'
-      - name: Echo the redis container port
-        run: echo 'For the docker host port 6379, the internal redis container port is ${{ job.services.redis.ports['6379'] }}.'
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
