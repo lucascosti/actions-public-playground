@@ -1,51 +1,28 @@
-name: Share data between jobs
+name: Node CI
 
 on: [push]
 
 jobs:
-  job_1:
-    name: Add 3 and 7
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
-      - shell: bash
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: npm install, build, and test
         run: |
-          expr 3 + 7 > math-homework.txt
-      - name: Upload math result for job 1
+          mkdir dist
+          echo "this is a file" > dist/file1.txt
+          mkdir dist/build1
+          echo "this is another file" > dist/build1/file2.txt
+          mkdir -p output/test
+          echo "code coverage in here" > output/test/code-coverage.html
+      - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: homework
-          path: math-homework.txt
-
-  job_2:
-    name: Multiply by 9
-    needs: job_1
-    runs-on: windows-latest
-    steps:
-      - name: Download math result for job 1
-        uses: actions/download-artifact@v2
-        with:
-          name: homework
-      - shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          expr $value \* 9 > math-homework.txt
-      - name: Upload math result for job 2
+          name: dist
+          path: dist
+      - name: Archive code coverage results
         uses: actions/upload-artifact@v2
         with:
-          name: homework
-          path: math-homework.txt
-
-  job_3:
-    name: Display results
-    needs: job_2
-    runs-on: macOS-latest
-    steps:
-      - name: Download math result for job 2
-        uses: actions/download-artifact@v2
-        with:
-          name: homework
-      - name: Print the final result
-        shell: bash
-        run: |
-          value=`cat math-homework.txt`
-          echo The result is $value
+          name: code-coverage-report
+          path: output/test/code-coverage.html
