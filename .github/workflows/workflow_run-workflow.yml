@@ -1,0 +1,13 @@
+name: Triggered by another workflow run!
+on:
+  workflow_run:
+    workflows: Manually triggered workflow
+    types: ["complete", "requested"]
+jobs:
+  run_me:
+    # Job name is Greeting
+    name: Triggered from another workflow
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "hello!"
