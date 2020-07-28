@@ -1,5 +1,8 @@
 name: Greeting workflow
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - $default-branch
 jobs:
   build:
     # Job name is Greeting
