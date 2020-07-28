@@ -12,15 +12,19 @@ jobs:
         run: |
           mkdir dist
           echo "this is a file" > dist/file1.txt
+          echo "this is BAD markdown file " > dist/iamabadmarkdownfile.md
           mkdir dist/build1
           echo "this is another file" > dist/build1/file2.txt
+          echo "please don't upload me" > dist/build1/pleasedontuploadme.md
           mkdir -p output/test
           echo "code coverage in here" > output/test/code-coverage.html
       - name: Archive production artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: dist
-          path: dist
+          name: dist-without-markdown
+          path: |
+            dist
+            !dist/**/*.md
       - name: Archive code coverage results
         uses: actions/upload-artifact@v2
         with:
