@@ -2,7 +2,6 @@ name: Triggered by another workflow run!
 on:
   workflow_run:
     workflows: ["Greeting workflow"]
-    types: ["complete", "requested"]
 jobs:
   run_me:
     # Job name is Greeting
