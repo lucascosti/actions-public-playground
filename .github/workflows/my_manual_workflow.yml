@@ -14,5 +14,5 @@ jobs:
       - uses: nohomers/composite-runs-action@master
         id: hello
         with:
-          person_to_greet: ${{ github.event.inputs.name }} 
+          person_to_greet: "mona the octocat"
       - run: echo "was the greeting successful? -- ${{ steps.hello.outputs.greet_result }}"
