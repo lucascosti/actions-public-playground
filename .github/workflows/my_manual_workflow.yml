@@ -6,15 +6,13 @@ on:
         description: 'Person to greet'
         required: true
         default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'San Francisco, CA'
 
 jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
-    - run: |
-        echo "Hello ${{ github.event.inputs.name }}!"
-        echo "- in ${{ github.event.inputs.home }}!"
+      - uses: nohomers/composite-runs-action@master
+        id: hello
+        with:
+          person_to_greet: ${{ github.event.inputs.name }} 
+      - run: echo "was the greeting successful? -- ${{ steps.hello.outputs.greet_result }}"
