@@ -1,7 +1,7 @@
 name: Upload Node.js 10 and 12 tool cache
 on: push
 jobs:
-  build:
+  upload_tool_cache:
     runs-on: ubuntu-18.04
     steps:
       - name: Clear any existing tool cache
@@ -21,6 +21,6 @@ jobs:
           cd "${{ runner.tool_cache }}"
           tar -czf tool_cache.tar.gz *
       - name: Upload tool cache artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v1
         with:
           path: ${{runner.tool_cache}}/tool_cache.tar.gz
