@@ -16,11 +16,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Archive tool cache
-        run: |
-          cd "${{ runner.tool_cache }}"
-          tar -czf tool_cache.tar.gz *
       - name: Upload tool cache artifact
         uses: actions/upload-artifact@v2
         with:
-          path: ${{runner.tool_cache}}/tool_cache.tar.gz
+          path: ${{runner.tool_cache}}
