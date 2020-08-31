@@ -9,11 +9,11 @@ jobs:
           mv "${{ runner.tool_cache }}" "${{ runner.tool_cache }}.old"
           mkdir -p "${{ runner.tool_cache }}"
       - name: Setup Node 10
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
           node-version: 10.x
       - name: Setup Node 12
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v1
         with:
           node-version: 12.x
       - name: Archive tool cache
@@ -21,6 +21,6 @@ jobs:
           cd "${{ runner.tool_cache }}"
           tar -czf tool_cache.tar.gz *
       - name: Upload tool cache artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           path: ${{runner.tool_cache}}/tool_cache.tar.gz
