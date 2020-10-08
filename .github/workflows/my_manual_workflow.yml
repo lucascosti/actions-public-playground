@@ -18,6 +18,7 @@ jobs:
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
+    - uses: actions/checkout@v2
     - run: echo the workflow directory is $GITHUB_WORKSPACE
     - name: List workflow dir contents
       run: cd $GITHUB_WORKSPACE && ls -LR
