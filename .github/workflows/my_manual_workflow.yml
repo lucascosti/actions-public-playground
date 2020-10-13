@@ -1,15 +1,6 @@
-name: Manually triggered workflow
+name: Not Manually triggered workflow
 on:
-  workflow_dispatch:
-    inputs:
-      name:
-        description: 'Person to greet'
-        required: true
-        default: 'Mona the Octocat'
-      home:
-        description: 'location'
-        required: false
-        default: 'San Francisco, CA'
+  push
 
 jobs:
   say_hello:
@@ -21,7 +12,6 @@ jobs:
         echo "- in ${{ github.event.inputs.home }}!"
 
   job_2:
-    needs: [say_hello]
     runs-on: ubuntu-latest
     steps:
       - name: Dump job context
