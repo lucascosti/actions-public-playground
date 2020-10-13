@@ -13,6 +13,8 @@ jobs:
 
   job_2:
     runs-on: ubuntu-latest
+    needs: [say_hello]
+    if: contains(hello, hello)
     steps:
       - name: Dump job context
         env:
