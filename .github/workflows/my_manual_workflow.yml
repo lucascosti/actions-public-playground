@@ -14,7 +14,7 @@ jobs:
   job_2:
     runs-on: ubuntu-latest
     needs: [say_hello]
-    if: contains(hello, hello)
+    if: contains('Hello world', 'llo')
     steps:
       - name: Dump job context
         env:
