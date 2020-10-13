@@ -14,7 +14,7 @@ jobs:
   job_2:
     runs-on: ubuntu-latest
     needs: [say_hello]
-    if: contains('Hello world', 'llo')
+    if: ${{ always() }}
     steps:
       - name: Dump job context
         env:
