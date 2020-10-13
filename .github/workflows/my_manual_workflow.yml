@@ -1,4 +1,6 @@
 name: Manually triggered workflow
+env:
+  run_job: false
 on:
   workflow_dispatch:
     inputs:
@@ -13,8 +15,22 @@ on:
 
 jobs:
   say_hello:
+    if: env.run_job
     runs-on: ubuntu-latest
     steps:
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
+
+  job_2:
+    needs: [say_hello]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump needs context
+        env:
+          NEEDS_CONTEXT: ${{ toJson(needs) }}
+        run: echo "$NEEDS_CONTEXT"
