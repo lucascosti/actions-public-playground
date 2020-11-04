@@ -9,7 +9,6 @@ on:
       home:
         description: 'location'
         required: false
-        default: 'San Francisco, CA'
 
 jobs:
   say_hello:
