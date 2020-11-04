@@ -9,6 +9,7 @@ on:
       home:
         description: 'location'
         required: false
+        default: 'Octoverse'
 
 jobs:
   say_hello:
