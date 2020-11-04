@@ -9,7 +9,7 @@ on:
       home:
         description: 'location'
         required: false
-        default: 'Octoverse'
+        default: 'The Octoverse'
 
 jobs:
   say_hello:
