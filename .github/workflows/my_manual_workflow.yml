@@ -12,3 +12,4 @@ jobs:
         run: |
           echo %SUPER_SECRET%
           echo %super_secret%
+        shell: cmd
