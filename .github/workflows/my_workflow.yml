@@ -13,8 +13,8 @@ jobs:
            site: "dev"
            datacenter: "site-b"
     steps:
-    - name: Echo site details
-      env:
-        SITE: ${{ matrix.site }}
-        DATACENTER: ${{ matrix.datacenter }}
-      run: echo $SITE $DATACENTER
+      - name: Echo site details
+        env:
+          SITE: ${{ matrix.site }}
+          DATACENTER: ${{ matrix.datacenter }}
+        run: echo $SITE $DATACENTER
