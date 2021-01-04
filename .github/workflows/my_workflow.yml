@@ -16,12 +16,9 @@ jobs:
         with:
           who-to-greet: 'Mona the Octocat'
         id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-  
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
+      - name: echo path before update
+        run: echo "$PATH"
+      - name: Update path
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+      - name: echo path after update
+        run: echo "$PATH"
