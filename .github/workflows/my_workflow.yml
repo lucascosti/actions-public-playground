@@ -16,7 +16,6 @@ jobs:
       - name: Step1
         run: |
           echo hi ${{ env.var1 }}
-          echo "var1=apples" >> $GITHUB_ENV
       # This step prints an output (time) from the previous step's action.
       - name: step 2
         if: env.var1 == 'bananas'
