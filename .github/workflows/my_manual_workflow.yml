@@ -10,4 +10,8 @@ jobs:
     - continue-on-error: ${{ fromJSON(env.continue) }}
       timeout-minutes: ${{ fromJSON(env.time) }}
       run: exit 1
-    - run: echo "I'm here!"
+    - run: | 
+        echo "I'm here!"
+        echo ${{ fromJSON(env.continue) }}
+        echo ${{ fromJSON(env.time) }}
+      
