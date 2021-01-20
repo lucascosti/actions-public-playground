@@ -4,18 +4,15 @@ on:
   - pull_request
   - workflow_dispatch
 jobs:
-  build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
+  weekday_job:
     runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: Mon
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Step1
-        run: |
-          echo "hi, there is no variable set."
-          var1=apples
-      # This step prints an output (time) from the previous step's action.
-      - name: step 2
-        if: env.var1 == 'apples'
-        run: echo "Is it still bananas? var1 is $var1"
+      - name: "Hello world when it's Monday"
+        if: env.DAY_OF_WEEK == "Mon"
+        run: echo "Hello world $FIRST_NAME $middle_name $Last_Name, sounds like you have a case of the Mondays!"
+        env:
+          FIRST_NAME: Mona
+          middle_name: The
+          Last_Name: Octocat
