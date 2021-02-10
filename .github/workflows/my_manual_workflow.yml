@@ -14,5 +14,5 @@ jobs:
         --data '{
           "title": "Issue created from workflow run",
           "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**."
-          }'
+          }' \
         --fail
