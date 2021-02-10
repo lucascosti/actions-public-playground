@@ -8,10 +8,11 @@ jobs:
     - name: Create issue using REST API
       run: |
         curl --request POST \
-        --url https://api.github.com/repos//issues \
+        --url https://api.github.com/repos/${{ github.repository }}/issues \
         --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' \
         --header 'content-type: application/json' \
         --data '{
           "title": "Issue created from workflow run",
           "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**."
           }'
+        --fail
