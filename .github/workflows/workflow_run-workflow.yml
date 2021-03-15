@@ -2,6 +2,7 @@ name: Triggered by another workflow run!
 on:
   workflow_run:
     workflows: ["Manually triggered workflow"]
+    branches: [workflow_run_improvements_18235]
     types: 
       - requested
 jobs:
