@@ -3,7 +3,7 @@ on:
   workflow_run:
     workflows: ["Manually triggered workflow"]
     types: 
-      - something
+      - requested
 jobs:
   run_me:
     # Job name is Greeting
