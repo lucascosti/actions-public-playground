@@ -2,7 +2,7 @@ name: Greeting workflow
 on:
   push:
     branches:
-      - 'filter_question_mark_test'
+      - 'filter_question_m?rk_test'
 jobs:
   build:
     # Job name is Greeting
