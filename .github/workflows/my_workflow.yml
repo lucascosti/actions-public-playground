@@ -1,27 +1,31 @@
-name: Greeting workflow
+name: Weekly Team Sync
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
+  push:
 jobs:
-  build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
-    runs-on: ubuntu-latest
-    steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
+  create_issue:
+      name: Create team sync issue
+      runs-on: ubuntu-latest
+      steps:
+      - name: Create team sync issue
+        uses: imjohnbo/issue-bot@v3.0
         with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-  
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
+            assignees: "monalisa, doctocat, hubot"
+            labels: "weekly sync, docs-team"
+            title: "Team sync"
+            body: |
+              ### Agenda
+              
+              - [ ] Start the recording
+              - [ ] Check-ins
+              - [ ] Discussion points
+              - [ ] Post the recording
+                      
+              ### Discussion Points
+              Add things to discuss below
+              
+              - [Work this week](https://github.com/orgs/github/projects/3)
+
+              pinned: false
+              close-previous: false
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
