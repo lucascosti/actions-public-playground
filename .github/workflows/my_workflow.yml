@@ -9,6 +9,7 @@ jobs:
     name: Greeting
     # This job runs on Linux
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/operator-context-test'
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Hello world
@@ -20,8 +21,3 @@ jobs:
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
   
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
