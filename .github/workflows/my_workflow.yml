@@ -4,24 +4,17 @@ on:
   - pull_request
   - workflow_dispatch
 jobs:
-  build:
+  tf_test:
     # Job name is Greeting
-    name: Greeting
+    name: True-False test
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-  
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
+      - name: 'true'
+        run: if ${{ true }} ; then echo "it's true"; else echo "it's false"; fi
+      - name: 'True'
+        run: if ${{ True }} ; then echo "it's true"; else echo "it's false"; fi
+      - name: 'false'
+        run: if ${{ false }} ; then echo "it's true"; else echo "it's false"; fi
+      - name: 'False'
+        run: if ${{ False }} ; then echo "it's true"; else echo "it's false"; fi
