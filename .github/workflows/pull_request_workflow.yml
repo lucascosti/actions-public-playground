@@ -17,9 +17,9 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
       - name: Check expression against labels
         run: |
-          echo "Match sync-english-index-for- : ${{ contains(fromJSON(github.event.pull_request.labels.*.name), 'sync-english-index-for-') }}"
-          echo "Match docs- : ${{ contains(fromJSON(github.event.pull_request.labels.*.name), 'docs-') }}"
-          echo "Match bug: ${{ contains(fromJSON(github.event.pull_request.labels.*.name), 'bug') }}"
-          echo 'The labels object ${{ fromJSON(github.event.pull_request.labels.*.name) }}'
+          echo "Match sync-english-index-for- : ${{ contains(toJSON(github.event.pull_request.labels.*.name), 'sync-english-index-for-') }}"
+          echo "Match docs- : ${{ contains(toJSON(github.event.pull_request.labels.*.name), 'docs-') }}"
+          echo "Match bug: ${{ contains(toJSON(github.event.pull_request.labels.*.name), 'bug') }}"
+          echo 'The labels object ${{ toJSON(github.event.pull_request.labels.*.name) }}'
 
         
