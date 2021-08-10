@@ -15,4 +15,9 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
+      - name: Check expression against labels
+        run: |
+          echo "${{ contains(github.event.pull_request.labels.*.name, 'sync-english-index-for-') }}"
+          echo "${{ contains(github.event.pull_request.labels.*.name, 'docs-') }}"
+
         
