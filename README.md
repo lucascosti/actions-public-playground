@@ -1,6 +1,6 @@
 # Lucas' Actions Playground
 Playing and testing GitHub actions
 
-Test change; change 6
+Test change; change 7
 
 ![](https://github.com/lucascosti/actions-public-playground/workflows/Greet%20Everyone/badge.svg?branch=master)
