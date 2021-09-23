@@ -18,4 +18,4 @@ jobs:
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
-    - run: echo "The runner name is ${{ runner.name }}"
+    - run: echo "The runner name is ${{ runner.name }} the env variables is OS $RUNNER_OS and name $RUNNER_NAME"
