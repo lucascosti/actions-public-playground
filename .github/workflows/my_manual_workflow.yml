@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "::set-output name=action_fruit::strawberry"
-    - run: |
+    - name: toggle workflow command echoing
+      run: |
           echo '::set-output name=action_echo::disabled'
           echo '::echo::on'
           echo '::set-output name=action_echo::enabled'
