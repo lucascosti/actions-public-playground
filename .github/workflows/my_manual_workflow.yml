@@ -15,6 +15,13 @@ jobs:
   say_hello:
     runs-on: ubuntu-latest
     steps:
+    - run: echo "::set-output name=action_fruit::strawberry"
+    - run: |
+          echo '::set-output name=action_echo::disabled'
+          echo '::echo::on'
+          echo '::set-output name=action_echo::enabled'
+          echo '::echo::off'
+          echo '::set-output name=action_echo::disabled'
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
         echo "- in ${{ github.event.inputs.home }}!"
