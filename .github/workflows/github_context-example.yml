@@ -1,0 +1,16 @@
+name: Run CI
+on: [push, pull_request]
+
+jobs:
+  normal_ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run CI
+        run: echo normal push
+
+  pull_request_ci:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Run CI
+        run: echo extra_stuff
