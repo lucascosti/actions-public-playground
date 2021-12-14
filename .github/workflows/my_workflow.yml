@@ -7,6 +7,8 @@ jobs:
     steps:
       - name: Dump GitHub context
         run: echo '${{ toJSON(github) }}'
+      - name: Dump GitHub context
+        run: echo '${{ toJSON(github) }}'
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
