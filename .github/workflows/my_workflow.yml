@@ -7,10 +7,10 @@ jobs:
     steps:
       - name: Dump GitHub context
         run: echo '${{ toJSON(github) }}'
-      - name: Dump GitHub context
-        run: echo '${{ toJSON(github) }}'
       - name: Dump job context
         run: echo '${{ toJSON(job) }}'
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
