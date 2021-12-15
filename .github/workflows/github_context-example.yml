@@ -1,28 +1,29 @@
-name: Run CI
+name: Hi Mascot
 on: push
 
 env:
-  list_command: ls
+  mascot: Mona
   super_duper_var: totally_awesome
   
 jobs:
-  linux_job:
-    runs-on: ubuntu-latest
+  windows_job:
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: ${{ env.list_command }}
+      - run: echo 'Hi ${{ env.mascot }}'
+      - run: echo 'Hi ${{ env.mascot }}'
+        env:
+          mascot: Octocat
       - name: Dump env context
         run: echo '${{ toJSON(env) }}'
 
-  windows_job:
-    runs-on: windows-latest
+  linux_job:
+    runs-on: ubuntu-latest
     env:
-      list_command: dir
+      first_name: Tux
     steps:
       - uses: actions/checkout@v2
-      - run: ${{ env.list_command }}
-      - run: ${{ env.list_command }}
-        env:
-          list_command: dir /w
+      - run: echo 'Hi ${{ env.mascot }}'
       - name: Dump env context
         run: echo '${{ toJSON(env) }}'
+
+  
