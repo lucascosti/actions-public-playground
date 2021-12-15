@@ -21,5 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: ${{ env.list_command }}
+      - run: ${{ env.list_command }}
+        env:
+          list_command: dir /w
       - name: Dump env context
         run: echo '${{ toJSON(env) }}'
