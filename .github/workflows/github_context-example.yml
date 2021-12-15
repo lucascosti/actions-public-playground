@@ -1,29 +1,20 @@
 name: Hi Mascot
 on: push
-
 env:
   mascot: Mona
   super_duper_var: totally_awesome
-  
+
 jobs:
   windows_job:
     runs-on: windows-latest
     steps:
-      - run: echo 'Hi ${{ env.mascot }}'
-      - run: echo 'Hi ${{ env.mascot }}'
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Mona
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Octocat
         env:
           mascot: Octocat
-      - name: Dump env context
-        run: echo '${{ toJSON(env) }}'
-
   linux_job:
     runs-on: ubuntu-latest
     env:
       mascot: Tux
     steps:
-      - uses: actions/checkout@v2
-      - run: echo 'Hi ${{ env.mascot }}'
-      - name: Dump env context
-        run: echo '${{ toJSON(env) }}'
-
-  
+      - run: echo 'Hi ${{ env.mascot }}'  # Hi Tux
