@@ -3,12 +3,13 @@ on: push
 
 env:
   list_command: ls
-  super_duper_var: "it's a secret"
+  super_duper_var: totally_awesome
   
 jobs:
   linux_job:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: ${{ env.list_command }}
       - name: Dump env context
         run: echo '${{ toJSON(steps) }}'
@@ -18,6 +19,7 @@ jobs:
     env:
       list_command: dir
     steps:
+      - uses: actions/checkout@v2
       - run: ${{ env.list_command }}
       - name: Dump env context
         run: echo '${{ toJSON(env) }}'
