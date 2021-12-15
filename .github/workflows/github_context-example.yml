@@ -1,16 +1,23 @@
 name: Run CI
-on: [push, pull_request]
+on: push
 
+env:
+  list_command: ls
+  super_duper_var: "it's a secret"
+  
 jobs:
-  normal_ci:
+  linux_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Run CI
-        run: echo normal push
+      - run: ${{ env.list_command }}
+      - name: Dump env context
+        run: echo '${{ toJSON(steps) }}'
 
-  pull_request_ci:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request'
+  windows_job:
+    runs-on: windows-latest
+    env:
+      list_command: dir
     steps:
-      - name: Run CI
-        run: echo extra_stuff
+      - run: ${{ env.list_command }}
+      - name: Dump env context
+        run: echo '${{ toJSON(env) }}'
