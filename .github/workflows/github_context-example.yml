@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: ${{ env.list_command }}
       - name: Dump env context
-        run: echo '${{ toJSON(steps) }}'
+        run: echo '${{ toJSON(env) }}'
 
   windows_job:
     runs-on: windows-latest
