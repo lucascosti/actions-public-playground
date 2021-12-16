@@ -7,11 +7,9 @@ jobs:
       redis:
         image: redis
         ports:
-          - 6379:6379
+          # Maps port 6379 in the service container to port 6390 on the Docker host.
+          - 6379:6390
     steps:
       - run: echo '${{ toJSON(job) }}'
-      - run: echo 'hello'
-      - run: return 1
-      - run: echo 'hello2'
+      - run: echo 'redis-cli -h localhost -p ${{ jobs.services.redis.ports.6379 }} ping'
       - run: echo '${{ toJSON(job) }}' 
-        if: ${{ always() }}
