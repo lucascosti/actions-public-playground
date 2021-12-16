@@ -1,6 +1,5 @@
 name: PostgreSQL Service Example
 on: push
-
 jobs:
   postgres-job:
     runs-on: ubuntu-latest
@@ -9,15 +8,10 @@ jobs:
         image: postgres
         env:
           POSTGRES_PASSWORD: postgres
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
         ports:
-          # Maps tcp port 5432 on service container to a random port on the host
+          # Maps TCP port 5432 in service container to an available port on the host.
           - 5432
 
     steps:
       - run: pg_isready -h localhost -p ${{ job.services.postgres.ports[5432] }}
-      - run: echo '${{ toJSON(job) }}'
