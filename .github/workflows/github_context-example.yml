@@ -10,7 +10,7 @@ jobs:
           - 6379:6379
     steps:
       - run: echo '${{ toJSON(job) }}'
-      - run: 'hello'
+      - run: echo 'hello'
       - run: return 1
-      - run: 'hello2'
+      - run: echo 'hello2'
       - run: echo '${{ toJSON(job) }}' 
