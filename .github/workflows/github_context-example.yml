@@ -14,3 +14,4 @@ jobs:
       - run: return 1
       - run: echo 'hello2'
       - run: echo '${{ toJSON(job) }}' 
+        if: ${{ always() }}
