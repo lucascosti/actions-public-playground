@@ -26,4 +26,4 @@ jobs:
           - 5432:5432
 
     steps:
-      - run: pg_isready -p 5432
+      - run: pg_isready -h localhost -p 5432
