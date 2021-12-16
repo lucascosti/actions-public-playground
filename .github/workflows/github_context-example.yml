@@ -22,8 +22,8 @@ jobs:
           --health-timeout 5s
           --health-retries 5
         ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
+          # Maps tcp port 5432 on service container to a random port on the host
+          - 5432
 
     steps:
-      - run: pg_isready -h localhost -p 5432
+      - run: pg_isready -h localhost -p ${{ job.services.postgres.ports[5432] }}
