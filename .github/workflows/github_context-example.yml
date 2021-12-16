@@ -1,14 +1,14 @@
-name: Redis service container
+name: MySQL service container
 on: push
 jobs:
-  redis-job:
+  mysql-job:
     runs-on: ubuntu-latest
     services:
-      redis:
+      mysql:
         image: mysql
         ports:
-          # Maps port 5200 in the service container to port 5432 on the Docker host.
-          - 5432:5200
+          # Maps port 3306 in the service container to port 5432 on the Docker host.
+          - 5432:3306
     steps:
       - run: echo '${{ toJSON(job) }}'
       - run: mysqladmin -h localhost -P 5432 ping 
