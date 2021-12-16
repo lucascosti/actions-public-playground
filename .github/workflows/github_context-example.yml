@@ -11,5 +11,5 @@ jobs:
           - 6379:5432
     steps:
       - run: echo '${{ toJSON(job) }}'
-      - run: echo 'redis-cli -h localhost -p ${{ job.services.redis.ports[6379] }} ping'
+      - run: echo 'redis-cli -h localhost -p 5432 }} ping'
       - run: echo '${{ toJSON(job) }}' 
