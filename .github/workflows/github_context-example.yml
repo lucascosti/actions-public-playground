@@ -1,15 +1,30 @@
-name: MySQL service container
-on: push
+name: Tests
+
+on: [push]
+
 jobs:
-  mysql-job:
+  build:
     runs-on: ubuntu-latest
+
     services:
-      mysql:
-        image: mysql
+      mariadb:
+        image: mariadb:latest
         ports:
-          # Maps port 3306 in the service container to port 5432 on the Docker host.
-          - 5432:3306
+          - 3306
+        env:
+          MYSQL_USER: user
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: test
+          MYSQL_ROOT_PASSWORD: password
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
+
     steps:
-      - run: echo '${{ toJSON(job) }}'
-      - run: mysqladmin -h localhost -P 5432 ping 
-      - run: echo '${{ toJSON(job) }}' 
+      - uses: actions/checkout@v1
+
+      - name: Verify MariaDB connection
+        env:
+          PORT: ${{ job.services.mariadb.ports[3306] }}
+        run: |
+          while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
+            sleep 1
+          done    
