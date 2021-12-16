@@ -2,20 +2,13 @@ name: PostgreSQL Service Example
 on: push
 
 jobs:
-  # Label of the runner job
-  runner-job:
-    # You must use a Linux environment when using service containers or container jobs
+  postgres-job:
     runs-on: ubuntu-latest
-    # Service containers to run with `runner-job`
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
         image: postgres
-        # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
-        # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -27,3 +20,4 @@ jobs:
 
     steps:
       - run: pg_isready -h localhost -p ${{ job.services.postgres.ports[5432] }}
+      - run: echo '${{ toJSON(job) }}'
