@@ -4,6 +4,9 @@ on:
     tags:
       - run_workflow
       - run_workflow*
+  pull_request:
+    tags:
+      - run_workflow*
 jobs:
   build:
     # Job name is Greeting
