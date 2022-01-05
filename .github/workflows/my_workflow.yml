@@ -1,8 +1,8 @@
 name: Greeting workflow
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
+  push:
+    tags:
+      - run_workflow
 jobs:
   build:
     # Job name is Greeting
