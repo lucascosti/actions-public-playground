@@ -1,9 +1,5 @@
 name: Greeting workflow
 on:
-  push:
-    tags:
-      - run_workflow
-      - run_workflow*
   pull_request:
     tags:
       - run_workflow*
