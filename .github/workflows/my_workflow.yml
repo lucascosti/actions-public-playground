@@ -3,6 +3,8 @@ on:
   push:
     tags:
       - run_workflow
+      - run_workflow1
+      - run_workflow2
 jobs:
   build:
     # Job name is Greeting
