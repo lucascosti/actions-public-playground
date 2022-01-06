@@ -1,0 +1,13 @@
+
+name: Trigger on tag
+on:
+  pull_request:
+    tags:
+      - run_workflow*
+jobs:
+  tag_test:
+    name: Tag test
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo this was triggered from a tag PR
