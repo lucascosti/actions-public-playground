@@ -5,13 +5,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      build_id: ${{ steps.build_step.outputs.id }}
+      build_id: ${{ steps.build_step.outputs.build_id }}
     steps:
       - name: Build
         id: build_step
         run: |
           # ./build
-          echo "::set-output name=build_id::$BUILD_ID" 
+          echo "::set-output name=build_id::ABC123" 
   deploy:
     needs: build
     runs-on: ubuntu-latest
