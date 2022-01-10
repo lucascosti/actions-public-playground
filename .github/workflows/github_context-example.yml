@@ -8,8 +8,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build
         id: build
-        run: echo hi
-        continue-on-error: true
+        run: fsdfs
       - name: dump context
         run: echo '${{ toJSON(steps) }}'
       - name: Debug
