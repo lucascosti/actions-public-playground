@@ -1,21 +1,20 @@
-name: Random shelled taco
+name: Random shelled taco test
 on: push
 jobs:
-  ci-job:
+  taco-test-job:
     runs-on: ubuntu-latest
     steps:
+      - id: get_taco_orders
+        run: echo test
       - name: Generate 0 or 1
         id: step_number
         run:  echo "::set-output name=taco_number::$(($RANDOM % 2))" 
-      - name: Determine shell
-        id: step_shell
+      - name: Make tacos
         run: |
           if [[ ${{ steps.step_number.outputs.taco_number }} == 0 ]]; then
-            echo "::set-output name=taco_type::hard_shell" 
+            echo "Make soft shell tacos"
           else 
-            echo "::set-output name=taco_type::soft_shell" 
+            echo "make hard shell tacos"
           fi
       - name: dump context
         run: echo '${{ toJSON(steps) }}' 
-      - name: Process order
-        run: ./order_process.sh ${{ steps.step_shell.outputs.taco_type }}
