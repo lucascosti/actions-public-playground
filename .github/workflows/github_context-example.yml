@@ -1,7 +1,7 @@
 name: Build and deploy
 on: push
 env:
-  test_thing: Mon
+  test_thing: Tue
 
 jobs:
   build:
