@@ -1,7 +1,15 @@
-name: runner context
+name: Build
 on: push
+
 jobs:
-  runner-context:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - run: ls -R ${{ runner.workspace }} 
+      - name: Build with set
+        run: ls ${{ runner.temp }}
+      - name: Upload logs on fail
+        if: ${{ failure }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build failure logs
+          path: ${{ runner.temp }}
