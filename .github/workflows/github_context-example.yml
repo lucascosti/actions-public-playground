@@ -1,17 +1,14 @@
-name: PostgreSQL Service Example
+name: Step condition
 on: push
 jobs:
-  postgres-job:
+  ci-job:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_PASSWORD: postgres
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-        ports:
-          # Maps TCP port 5432 in service container to an available port on the host.
-          - 5432
-
     steps:
-      - run: pg_isready -h localhost -p ${{ job.services.postgres.ports[5432] }}
+      - name: Step 1
+        id: step1
+        run: echo step 1
+      - name: Step 2
+        id: step2
+        run: echo step 2
+      - name: dump context
+        run: echo '${{ toJSON(steps) }}' 
