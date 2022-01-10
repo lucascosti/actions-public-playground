@@ -1,20 +1,17 @@
-name: Random shelled taco test
+name: Generate random failure
 on: push
 jobs:
-  taco-test-job:
+  randomly-failing-job:
     runs-on: ubuntu-latest
     steps:
-      - id: get_taco_orders
-        run: echo test
+      - id: checkout
+        uses: actions/checkout@v2
       - name: Generate 0 or 1
-        id: step_number
-        run:  echo "::set-output name=taco_number::$(($RANDOM % 2))" 
+        id: generate_number
+        run:  echo "::set-output name=random_number::$(($RANDOM % 2))" 
       - name: Make tacos
         run: |
-          if [[ ${{ steps.step_number.outputs.taco_number }} == 0 ]]; then
-            echo "Make soft shell tacos"
-          else 
-            echo "make hard shell tacos"
-          fi
+          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then; return 0
+          else; return 1; fi
       - name: dump context
         run: echo '${{ toJSON(steps) }}' 
