@@ -4,8 +4,11 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      build_time: ${{ steps.build_step.outputs.test }}
     steps:
-      - name: Build with set
+      - name: Build
+        id: build_step
         run: |
           echo Hi Mum
           echo "::set-output name=test::hi!"
