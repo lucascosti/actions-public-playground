@@ -8,10 +8,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Generate 0 or 1
         id: generate_number
-        run:  echo "::set-output name=random_number::$(($RANDOM % 2))" 
-      - name: Pass or fail
-        run: |
-          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then return 0
-          else return 1; fi
+        run:  echo "::set-output name=random_number::$(($RANDOM % 2))"
       - name: dump context
         run: echo '${{ toJSON(steps) }}' 
+      - name: Pass or fail
+        run: |
+          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then return 0; else return 1; fi
