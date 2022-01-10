@@ -1,16 +1,21 @@
-name: Step condition
+name: Random shelled taco
 on: push
 jobs:
   ci-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Step 1
-        id: step1
-        run: echo step 1
-      - name: Step 2
-        id: step2
+      - name: Generate 0 or 1
+        id: step_number
+        run:  echo "::set-output name=taco_number::$(($RANDOM % 2))" 
+      - name: Determine shell
+        id: step_shell
         run: |
-          echo step 2
-          echo "::set-output name=action_fruit::strawberry"
+          if [[ ${{ steps.step_number.outputs.taco_number }} == 0 ]]; then
+            echo "::set-output name=taco_type::hard_shell" 
+          else 
+            echo "::set-output name=taco_type::soft_shell" 
+          fi
       - name: dump context
         run: echo '${{ toJSON(steps) }}' 
+      - name: Process order
+        run: ./order_process.sh ${{ steps.step_shell.outputs.taco_type }}
