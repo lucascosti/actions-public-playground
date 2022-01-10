@@ -13,5 +13,5 @@ jobs:
       - name: dump context
         run: echo '${{ toJSON(steps) }}'
       - name: Debug
-        if: ${{ steps.build.outcome }} == 'failure'
+        if: ${{ steps.build.outcome == 'failure' }}
         run: ./debug-script
