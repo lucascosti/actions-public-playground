@@ -8,7 +8,7 @@ jobs:
       - name: Build with set
         run: ls ${{ runner.temp }}
       - name: Upload logs on fail
-        if: ${{ failure }}
+        if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: Build failure logs
