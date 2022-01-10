@@ -6,10 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Build with set
-        run: ls ${{ runner.temp }}
+        run: |
+          mkdir ${{ runner.temp }}/logs
+          echo "hi mum" > ${{ runner.temp }}/logs/test.txt
+          exit 1
       - name: Upload logs on fail
         if: ${{ failure() }}
         uses: actions/upload-artifact@v2
         with:
           name: Build failure logs
-          path: ${{ runner.temp }}
+          path: ${{ runner.temp }}/logs
