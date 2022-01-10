@@ -9,5 +9,5 @@ jobs:
     steps:
       - run: echo hello
       - run: echo Today is Monday
-        if: ${{ env.test_thing == 'Mon' }}
+        if:  env.test_thing == 'Mon'
   
