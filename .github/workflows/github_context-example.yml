@@ -5,17 +5,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     outputs:
-      build_time: ${{ steps.build_step.outputs.test }}
+      build_id: ${{ steps.build_step.outputs.id }}
     steps:
       - name: Build
         id: build_step
         run: |
-          echo Hi Mum
-          echo "::set-output name=test::hi!"
-  
-  debug:
+          ./build
+          echo "::set-output name=build_id::$BUILD_ID" 
+  deploy:
     needs: build
     runs-on: ubuntu-latest
+    steps:
+      - name: Dump needs context
+        run: deploy ${{ needs.build.outputs.build_id }}
+  debug:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    if: ${{ failure() }}
     steps:
       - name: Dump needs context
         run: echo '${{ toJSON(needs) }}'
