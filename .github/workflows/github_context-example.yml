@@ -9,9 +9,9 @@ jobs:
       - name: Generate 0 or 1
         id: generate_number
         run:  echo "::set-output name=random_number::$(($RANDOM % 2))" 
-      - name: Make tacos
+      - name: Pass or fail
         run: |
-          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then; return 0
-          else; return 1; fi
+          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then return 0
+          else return 1; fi
       - name: dump context
         run: echo '${{ toJSON(steps) }}' 
