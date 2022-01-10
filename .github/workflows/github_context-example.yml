@@ -9,6 +9,8 @@ jobs:
         run: echo step 1
       - name: Step 2
         id: step2
-        run: echo step 2
+        run: |
+          echo step 2
+          echo "::set-output name=action_fruit::strawberry"
       - name: dump context
         run: echo '${{ toJSON(steps) }}' 
