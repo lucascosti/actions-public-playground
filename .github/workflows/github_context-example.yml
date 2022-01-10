@@ -1,27 +1,13 @@
-name: Build
+name: Build and deploy
 on: push
+env:
+  test_thing: Mon
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      build_id: ${{ steps.build_step.outputs.build_id }}
     steps:
-      - name: Build
-        id: build_step
-        run: |
-          # ./build
-          echo "::set-output name=build_id::ABC123" 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Dump needs context
-        run: echo ${{ needs.build.outputs.build_id }}
-  debug:
-    needs: [build, deploy]
-    runs-on: ubuntu-latest
-    if: ${{ failure() }}
-    steps:
-      - name: Dump needs context
-        run: echo '${{ toJSON(needs) }}'
+      - run: echo hello
+      - run: echo Today is Monday
+        if: ${{ env.test_thing }} == 'Mon'
+  
