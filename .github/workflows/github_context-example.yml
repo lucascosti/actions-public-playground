@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Dump needs context
-        run: deploy ${{ needs.build.outputs.build_id }}
+        run: echo ${{ needs.build.outputs.build_id }}
   debug:
     needs: [build, deploy]
     runs-on: ubuntu-latest
