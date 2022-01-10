@@ -8,7 +8,7 @@ jobs:
       - name: Build with set
         run: |
           echo Hi Mum
-          exit 1
+          echo "::set-output name=test::hi!"
   
   debug:
     needs: build
