@@ -1,16 +1,17 @@
-name: Generate random failure
+name: Build
 on: push
 jobs:
-  randomly-failing-job:
+  build-job:
     runs-on: ubuntu-latest
     steps:
       - id: checkout
         uses: actions/checkout@v2
-      - name: Generate 0 or 1
-        id: generate_number
-        run:  echo "::set-output name=random_number::$(($RANDOM % 2))"
+      - name: Build
+        id: build
+        run: ./build
+        continue-on-error: true
       - name: dump context
-        run: echo '${{ toJSON(steps) }}' 
-      - name: Pass or fail
-        run: |
-          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then exit 0; else exit 1; fi
+        run: echo '${{ toJSON(steps) }}'
+      - name: Debug
+        if: ${{ steps.build.outcome }} == 'failure'
+        run: ./debug-script
