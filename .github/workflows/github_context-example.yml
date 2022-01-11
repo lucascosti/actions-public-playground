@@ -10,7 +10,12 @@ jobs:
         node: [14, 16]
     steps:
       - uses: actions/checkout@v2
-      - run: echo 'npm test > test-job-${{ strategy.job-index}}.txt'
+      - run: echo 'npm test' > test-job-${{ strategy.job-index }}.txt
+      - name: Upload logs
+        uses: actions/upload-artifact@v2
+        with:
+          name: Build log for job ${{ strategy.job-index }}
+          path: test-job-${{ strategy.job-index }}.txt
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
