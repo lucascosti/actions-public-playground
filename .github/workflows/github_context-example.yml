@@ -14,16 +14,12 @@ jobs:
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Dump needs context
-        run: echo ${{ needs.build.outputs.build_id }}
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
         
   debug:
-    needs: [build, deploy]
     runs-on: ubuntu-latest
     steps:
       - name: Dump strategy context
