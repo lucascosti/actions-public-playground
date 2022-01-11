@@ -1,16 +1,30 @@
-name: Matrix test
+name: Build
 on: push
-
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [10, 12, 14, 16]
+    outputs:
+      build_id: ${{ steps.build_step.outputs.build_id }}
     steps:
-      - run: echo this is node ${{ matrix.node }}
+      - name: Build
+        id: build_step
+        run: |
+          # ./build
+          echo "::set-output name=build_id::ABC123" 
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
-  
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump needs context
+        run: echo ${{ needs.build.outputs.build_id }}
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
+        
+  debug:
+    needs: [build, deploy]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump strategy context
+        run: echo '${{ toJSON(strategy) }}'
