@@ -1,4 +1,4 @@
-name: Matrix test
+name: Test matrix
 on: push
 
 jobs:
@@ -6,9 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [10, 12, 14, 16]
+        test-group: [1, 2]
+        node: [14, 16]
     steps:
-      - run: echo this is node ${{ matrix.node }}
+      - uses: actions/checkout@v2
+      - run: echo 'npm test > test-job-${{ strategy.job-index}}.txt'
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
       - name: Dump matrix context
