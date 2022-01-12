@@ -14,5 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy build to target
-        run: echo "deploy --build ${{ inputs.build_id }} --target ${{ inputs.deploy_target }}
+        run: echo "deploy --build ${{ inputs.build_id }} --target ${{ inputs.deploy_target }}"
+      - name: Dump inputs context
+        run: echo '${{ toJSON(inputs) }}'
         
