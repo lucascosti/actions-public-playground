@@ -1,0 +1,9 @@
+name: caller test workflow
+on: push
+
+jobs:
+  call_workflow:
+    uses: octo-org/example-repo/.github/workflows/workflow-A.yml@v1
+    with:
+      build_id: 123456768
+      deploy_target: deployment_sys_1a
