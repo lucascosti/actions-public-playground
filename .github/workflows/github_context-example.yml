@@ -3,7 +3,7 @@ on: push
 
 jobs:
   call_workflow:
-    uses: octo-org/example-repo/.github/workflows/workflow-A.yml@v1
+    uses:  lucascosti/actions-public-playground/.github/workflows/github_context-example-reusable-workflow.yml@context_article_revamp
     with:
       build_id: 123456768
       deploy_target: deployment_sys_1a
