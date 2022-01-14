@@ -1,7 +1,7 @@
 name: Triggered by another workflow run!
 on:
   workflow_run:
-    workflows: ["Manually triggered workflow"]
+    workflows: ["[test] Manually triggered workflow"]
     types: 
       - completed
 jobs:
