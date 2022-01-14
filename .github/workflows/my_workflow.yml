@@ -25,4 +25,4 @@ jobs:
         run: echo '${{ toJSON(needs) }}'
       - name: Dump inputs context
         run: echo '${{ toJSON(inputs) }}'
-      - uses:  nohomers/javascript-action-test2@dump_github_context
+      - uses: nohomers/no-homers-hello-world-docker-action@dump_github_context
