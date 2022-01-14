@@ -1,9 +1,24 @@
-name: caller test workflow1
+name: Hi Mascot
 on: push
+env:
+  mascot: Mona
+  super_duper_var: totally_awesome
 
 jobs:
-  call_workflow:
-    uses:  lucascosti/actions-public-playground/.github/workflows/github_context-example-reusable-workflow.yml@context_article_revamp
-    with:
-      build_id: 123456768
-      deploy_target: deployment_sys_1a
+  windows_job:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          echo 'Hi ${{ env.mascot }}'  # Hi Mona
+          cat ${{ github.env }}
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - run: |
+          echo 'Hi ${{ env.mascot }}'  # Hi Octocat
+          cat ${{ github.env }}
+          cat ${{ github.path }}
+          echo "$HOME/.local/test" >> $GITHUB_PATH
+        env:
+          mascot: Octocat
+      - run: |
+          cat ${{ github.env }}
+          cat ${{ github.path }}
