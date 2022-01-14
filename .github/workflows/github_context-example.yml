@@ -20,5 +20,5 @@ jobs:
         env:
           mascot: Octocat
       - run: |
-          cat ${{ github.env }}
-          cat ${{ github.path }}
+          ls ${{ github.env }}
+          ls ${{ github.path }}
