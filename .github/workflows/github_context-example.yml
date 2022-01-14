@@ -20,6 +20,6 @@ jobs:
         env:
           mascot: Octocat
       - run: |
-          ls ${{ github.env }}
-          ls ${{ github.path }}
+          cat ${{ github.env }}
+          cat ${{ github.path }}
           sleep 10
