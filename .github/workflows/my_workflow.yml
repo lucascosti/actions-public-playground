@@ -26,3 +26,7 @@ jobs:
       - name: Dump inputs context
         run: echo '${{ toJSON(inputs) }}'
       - uses: nohomers/no-homers-hello-world-docker-action@dump_github_context
+      - name: dump env file
+        run: cat ${{ github.env }}
+      - name: dump path file
+        run: cat ${{ github.path }}
