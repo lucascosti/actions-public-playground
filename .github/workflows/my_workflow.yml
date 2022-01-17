@@ -1,4 +1,4 @@
-name: "Greeting workflow"
+name: "[test] Greeting workflow"
 on:
   - push
   - pull_request
