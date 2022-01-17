@@ -1,8 +1,7 @@
 name: Triggered by another workflow run!
 on:
   workflow_run:
-    workflows: 
-      - Greeting workflow \[test\]
+    workflows: "*test* Greeting workflow"
     types: 
       - completed
 jobs:
