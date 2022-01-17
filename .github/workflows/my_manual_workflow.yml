@@ -1,4 +1,4 @@
-name: "[test] Manually triggered workflow"
+name: "*test* Manually triggered workflow"
 on:
   workflow_dispatch:
     inputs:
