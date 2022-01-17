@@ -1,4 +1,4 @@
-name: Greeting workflow \[test\]
+name: Greeting workflow [test]
 on:
   - push
   - pull_request
