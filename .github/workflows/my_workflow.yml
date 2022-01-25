@@ -7,4 +7,4 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'lucascosti/actions-public-playground'] }}"
+      - run: echo "${{ fromJSON('["ubuntu-latest", "self-hosted"]') }}"
