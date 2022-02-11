@@ -11,5 +11,6 @@ jobs:
     steps:
       - run: echo "hello"
       - run: echo "::notice ::This is powershell!"
+      - run: echo "::warning ::echos work the same!"
       - run: echo "bye!"
     
