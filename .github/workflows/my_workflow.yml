@@ -2,7 +2,7 @@ name: File path workflow
 on:
   push:
     paths:
-      - '**.js?'
+      - '**.jsx?'
 
 jobs:
   build:
