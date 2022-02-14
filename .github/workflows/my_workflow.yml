@@ -1,8 +1,9 @@
-name: Greeting workflow
+name: File path workflow
 on:
   push:
-    branches:
-      - 'filter_question\?_mark_test'
+    paths:
+      - '**.js'
+
 jobs:
   build:
     # Job name is Greeting
