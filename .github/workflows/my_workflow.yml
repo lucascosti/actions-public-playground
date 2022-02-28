@@ -5,6 +5,11 @@ on:
   - workflow_dispatch
 jobs:
   build:
+    strategy:
+      matrix: 
+        npm: 
+          - test
+          - two 
     # Job name is Greeting
     name: Greeting
     # This job runs on Linux
@@ -18,7 +23,7 @@ jobs:
         id: hello
       # This step prints an output (time) from the previous step's action.
       - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
+        run: echo 'The ${{ matrix.npm }} time was ${{ steps.hello.outputs.time }}.'
   
   deploy_prod:
     if: contains( github.ref, 'master') 
