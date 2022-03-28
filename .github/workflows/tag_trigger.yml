@@ -2,6 +2,8 @@
 name: Trigger on tag
 on:
   pull_request:
+    branches:
+      - nothing
     tags:
       - run_workflow*
 jobs:
