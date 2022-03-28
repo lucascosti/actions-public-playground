@@ -1,7 +1,7 @@
 
 name: Trigger on tag
 on:
-  pull_request:
+  push:
     branches:
       - nothing
     tags:
