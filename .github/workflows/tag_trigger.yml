@@ -12,4 +12,4 @@ jobs:
     # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      - run: echo this was triggered from a tag PR
+      - run: echo this was triggered from a tag push
