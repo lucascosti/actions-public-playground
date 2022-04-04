@@ -1,0 +1,21 @@
+
+name: "manual matrix"
+on:
+  workflow_dispatch:
+        
+matrix-job:
+  runs-on: ${{ matrix.os }}
+  strategy:
+    matrix:
+      os: [ubuntu-18.04, ubuntu-20.04]
+      node: [10, 12, 14]
+  steps:
+    - run: echo "This is node ${{matrix.node}} on ${{matrix.os}}"
+    - run: exit 1
+    
+other-job:
+  runs-on: ubuntu-latest
+  steps:
+    - run: echo "Going to sleep"
+    - run: sleep 60
+    - run: echo "i'm awake!"
