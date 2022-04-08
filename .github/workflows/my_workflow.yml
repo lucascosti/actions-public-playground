@@ -1,27 +1,19 @@
-name: Greeting workflow
-on:
-  - push
-  - pull_request
-  - workflow_dispatch
+name: Redis container example
+on: push
+
 jobs:
-  build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
+  # Label of the container job
+  container-job:
+    # Containers must run in Linux based operating systems
     runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:16-bullseye
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-  
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
+      - run: echo "hello"
