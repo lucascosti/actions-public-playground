@@ -5,23 +5,33 @@ on:
   - workflow_dispatch
 jobs:
   build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
     runs-on: ubuntu-latest
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-  
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
+      - name: fail demo
+        id: demo
+        run: exit 1
+      
+      - name: echo contexts
+        run: |
+          echo job.status ${{ job.status }}
+          echo steps.demo.conclusion ${{ steps.demo.conclusion }}   
+
+      - name: action_status - does not run
+        if: ${{ github.action_status == 'failure' }}
+        run: echo ${{ steps.demo.conclusion }}
+
+      - name: status - does not run
+        if: ${{ job.status == 'failure' }}
+        run: echo "test"
+
+      - name: failure - runs
+        if: ${{ failure() }}
+        run: echo "test"
+
+      - name: failure with condition - runs
+        if: ${{ failure() && steps.demo.conclusion == 'failure' }}
+        run: echo "test"
+
+      - name: condition without failure - does not run
+        if: ${{ steps.demo.conclusion == 'failure' }}
+        run: echo "test"
