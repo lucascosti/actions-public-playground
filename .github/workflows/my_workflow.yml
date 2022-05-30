@@ -12,6 +12,7 @@ jobs:
         run: exit 1
       
       - name: echo contexts
+        if: ${{ always() }}
         run: |
           echo job.status ${{ job.status }}
           echo steps.demo.conclusion ${{ steps.demo.conclusion }}   
