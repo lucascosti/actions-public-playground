@@ -22,7 +22,7 @@ jobs:
         run: echo ${{ steps.demo.conclusion }}
 
       - name: status - does not run
-        if: ${{ job.status == 'failure' }}
+        if: job.status == 'failure'
         run: echo "test"
 
       - name: failure - runs
