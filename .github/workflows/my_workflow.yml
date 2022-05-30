@@ -16,6 +16,7 @@ jobs:
         run: |
           echo job.status ${{ job.status }}
           echo steps.demo.conclusion ${{ steps.demo.conclusion }}   
+          echo github.action_status ${{ github.action_status }}
 
       - name: action_status - does not run
         if: ${{ github.action_status == 'failure' }}
