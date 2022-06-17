@@ -17,14 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Generate random file
-      run: head -c 1000 </dev/urandom >~/myfile
+      run: head -c 1000 </dev/urandom >myfile
     - name: Cache test
       id: cache-step
       uses: actions/cache@v3
       with:
-        # npm cache files are stored in `~/.npm` on Linux/macOS
-        path: ~/myfile
-        key: ${{ runner.os }}-build-test-${{ hashFiles('~/myfile') }}
+        path: myfile
+        key: ${{ runner.os }}-build-test-${{ hashFiles('myfile') }}
     - run: echo ${{ steps.cache-step.outputs.cache-hit }}
     - run: |
         echo "Hello ${{ github.event.inputs.name }}!"
