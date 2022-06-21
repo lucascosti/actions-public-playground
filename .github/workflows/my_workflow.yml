@@ -1,4 +1,4 @@
-name: Go
+name: Upload Go test results
 
 on: [push]
 
@@ -6,14 +6,22 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        go-version: [ '1.14', '1.15', '1.16.x' ]
+
     steps:
       - uses: actions/checkout@v3
       - name: Setup Go
         uses: actions/setup-go@v3
         with:
-          go-version: '1.16.x'
+          go-version: ${{ matrix.go-version }}
       - name: Install dependencies
-        run: |
-          go get .
-          go get example.lab/octo-examplemodule
-          go get example.lab/octo-examplemodule@v1.3.4
+        run: go get .
+      - name: Test with Go
+        run: go test -json > TestResults-${{ matrix.go-version }}.json
+      - name: Upload Go test results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Go-results-${{ matrix.go-version }}
+          path: TestResults-${{ matrix.go-version }}.json
