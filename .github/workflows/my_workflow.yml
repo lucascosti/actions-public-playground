@@ -6,16 +6,14 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        go-version: [ '1.14', '1.15', '1.16.x' ]
-
     steps:
       - uses: actions/checkout@v3
-      - name: Setup Go ${{ matrix.go-version }}
+      - name: Setup Go
         uses: actions/setup-go@v3
         with:
-          go-version: ${{ matrix.go-version }}
-      # You can test your matrix by printing the current Go version
-      - name: Display Go version
-        run: go version
+          go-version: '1.16.x'
+      - name: Install dependencies
+        run: |
+          go get .
+          go get example.lab/octo-examplemodule
+          go get example.lab/octo-examplemodule@v1.3.4
