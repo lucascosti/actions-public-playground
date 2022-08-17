@@ -7,7 +7,7 @@ jobs:
     # Job name is Greeting
     name: Greeting
     # This job runs on Linux
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
       # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
       - name: Hello world
@@ -20,3 +20,5 @@ jobs:
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
       - name: Echo runner context info
         run: echo "${{ toJson(runner) }}"
+      - name: echo env vars
+        run: printenv
