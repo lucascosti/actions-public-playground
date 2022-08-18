@@ -24,5 +24,3 @@ jobs:
         run: echo "::set-output name=firstword::hello"
       - id: step2
         run: echo "::set-output name=secondword::world"
-      - name: Dump jobs context
-        run: echo '${{ toJSON(jobs) }}'
