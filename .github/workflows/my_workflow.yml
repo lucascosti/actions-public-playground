@@ -21,7 +21,7 @@ jobs:
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
   
   deploy_prod:
-    if: contains( github.ref, 'master') 
+    if: ${{ contains(fromJson('["push", "pull_request"]'), github.event_name) }}
     runs-on: ubuntu-latest
     steps:
       - run: echo "Deply to production server"
