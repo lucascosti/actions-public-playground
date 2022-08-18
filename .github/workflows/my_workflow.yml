@@ -1,34 +1,12 @@
-name: Context testing
-on: push
-
+on:
+  workflow_call:
+    outputs:
+      A:
+        value: ${{ jobs.my_job.outputs.A }} # jobs is equivalent to the needs context and has the same structure, but includes all jobs in the current workflow file
 jobs:
-  dump_contexts_to_log:
+  my_job:
+    outputs:
+      A: MyOutput
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump jobs context
-        run: echo '${{ toJSON(jobs) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
-      - name: Dump secrets context
-        run: echo '${{ toJSON(secrets) }}'  
-      - name: Dump strategy context
-        run: echo '${{ toJSON(strategy) }}'
-      - name: Dump matrix context
-        run: echo '${{ toJSON(matrix) }}'
-      - name: Dump needs context
-        run: echo '${{ toJSON(needs) }}'
-      - name: Dump inputs context
-        run: echo '${{ toJSON(inputs) }}'
-      - uses: nohomers/no-homers-hello-world-docker-action@dump_github_context
-      - name: dump env file
-        run: cat ${{ github.env }}
-      - name: dump path file
-        run: cat ${{ github.path }}
+    - run: exit 0
