@@ -13,3 +13,5 @@ jobs:
     needs: job1
     steps:
       - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
+      - name: Dump jobs context from reusable workflow
+        run: echo ${{ toJSON(needs.job1.outputs.jobscontext) }}
