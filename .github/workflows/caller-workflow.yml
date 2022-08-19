@@ -14,4 +14,4 @@ jobs:
     steps:
       - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
       - name: Dump jobs context from reusable workflow
-        run: echo ${{ needs.job1.outputs.jobscontext }}
+        run: echo "${{ needs.job1.outputs.jobscontext }}"
