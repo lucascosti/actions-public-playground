@@ -2,7 +2,9 @@ name: Greeting workflow
 on:
   push:
     branches:
-      - 'filter_question\?_mark_test'
+      - main
+      - filter_*
+      - v[12].[0-9]+.[0-9]+
 jobs:
   build:
     # Job name is Greeting
