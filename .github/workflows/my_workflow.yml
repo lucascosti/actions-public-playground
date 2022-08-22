@@ -19,4 +19,4 @@ jobs:
           - 8080/udp
     steps:
       - run: echo "hello"
-      - run: docker container ls
+      - run: /usr/bin/docker container ls
