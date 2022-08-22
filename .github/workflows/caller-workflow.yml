@@ -6,7 +6,7 @@ on:
 
 jobs:
   job1:
-    uses: ./.github/workflows/reusable-workflow.yml
+    uses: ./.github/workflows/reusable_workflow.yml
 
   job2:
     runs-on: ubuntu-latest
