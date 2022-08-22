@@ -12,3 +12,5 @@ jobs:
     steps:
       - name: list powershell module locations for ubuntu runner
         run: find /usr/local/share/powershell/Modules -print
+      - name: see suggested location
+        run: find /usr/share/az_* -print
