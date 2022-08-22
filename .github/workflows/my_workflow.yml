@@ -15,5 +15,8 @@ jobs:
       redis:
         # Docker Hub image
         image: redis
+        ports: 
+          - 8080/udp
     steps:
       - run: echo "hello"
+      - run: docker container ls
