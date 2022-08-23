@@ -1,0 +1,11 @@
+name: Release test
+on:
+  release:
+    types:
+     - published
+
+jobs:
+  release_test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo This job was triggered by a release
