@@ -16,11 +16,6 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-      - uses: actions/download-artifact@v2
-        with:
-          name: my-artifact
-      - name: Echo artifact
-        run: cat textfile.txt
       
   on-success:
     runs-on: ubuntu-latest
