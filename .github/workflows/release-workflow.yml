@@ -4,6 +4,8 @@ on:
     types:
      - prereleased
      - released
+    tags:
+    - "*.*.*"
 jobs:
   release_test:
     runs-on: ubuntu-latest
