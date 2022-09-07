@@ -5,8 +5,6 @@ on:
      - prereleased
      - released
      - published
-    tags:
-      - "v*"
 
 jobs:
   release_test:
