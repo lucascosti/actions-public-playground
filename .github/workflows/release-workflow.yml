@@ -4,8 +4,6 @@ on:
     types:
      - prereleased
      - released
-     - published
-
 jobs:
   release_test:
     runs-on: ubuntu-latest
