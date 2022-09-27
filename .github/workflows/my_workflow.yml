@@ -20,7 +20,7 @@ jobs:
       - name: Echo the greeting's time
         run: echo 'The time was ${{ steps.hello.outputs.time }}.'
       - name: negation test
-        if: contains('Hello world', 'llo')
+        if: !contains('Hello world', 'llo')
         run: echo 'The test passed'
   
   deploy_prod:
