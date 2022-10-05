@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-    uses: lucascosti/actions-public-playground/.github/workflows/reuseable-workflow.yml@31312_reusable_workflow_changes
+    uses: lucascosti/actions-public-playground/.github/workflows/reusable-workflow.yml@31312_reusable_workflow_changes
     with:
       config-path: .github/labeler.yml
     secrets:
