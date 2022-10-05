@@ -1,17 +1,16 @@
-name: Call a reusable workflow and use its outputs
+name: Call a reusable workflow
 
 on:
-  workflow_dispatch:
-  push:
+  pull_request:
 
 jobs:
-  job1:
-    uses: ./.github/workflows/reusable-workflow.yml
 
-  job2:
-    runs-on: ubuntu-latest
-    needs: job1
-    steps:
-      - run: echo ${{ needs.job1.outputs.firstword }} ${{ needs.job1.outputs.secondword }}
-      - name: Dump jobs context from reusable workflow
-        run: echo "${{ needs.job1.outputs.jobscontext }}"
+  call-workflow-passing-data:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: lucascosti/actions-public-playground/.github/workflows/reuseable-workflow.yml@31312_reusable_workflow_changes
+    with:
+      config-path: .github/labeler.yml
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}
