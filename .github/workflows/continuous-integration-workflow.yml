@@ -7,16 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create file
-        run: echo "please artifact me" > thefile.txt
+        run: echo ${{ secrets.NOT_A_SECRET }} > thefile.txt
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@main
         with:
           name: Test artifact
           path: thefile.txt
-      - name: Create file with different case for #12261
-        run:  echo "I have a different case" > THEFILE.txt
-      - name: Upload artifact with different case
-        uses: actions/upload-artifact@v1
-        with:
-          name: Test artifact
-          path: THEFILE.txt
