@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create file
-        run: echo ${{ secrets.NOT_A_SECRET }} > thefile.txt
+        run: echo '${{ secrets.NOT_A_SECRET }}' > thefile.txt
       - name: Upload artifact
         uses: actions/upload-artifact@main
         with:
