@@ -3,25 +3,17 @@ on:
   - push
   - pull_request
   - workflow_dispatch
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
-  build:
-    # Job name is Greeting
-    name: Greeting
-    # This job runs on Linux
+  greeting_job:
     runs-on: ubuntu-latest
+    env:
+      Greeting: Hello
     steps:
-      # This step uses GitHub's hello-world-javascript-action: https://github.com/actions/hello-world-javascript-action
-      - name: Hello world
-        uses: actions/hello-world-javascript-action@v1
-        with:
-          who-to-greet: 'Mona the Octocat'
-        id: hello
-      # This step prints an output (time) from the previous step's action.
-      - name: Echo the greeting's time
-        run: echo 'The time was ${{ steps.hello.outputs.time }}.'
-  
-  deploy_prod:
-    if: contains( github.ref, 'master') 
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Deply to production server"
+      - name: "Say Hello Mona it's Monday"
+        run: |
+          echo "$Greeting $First_Name. Today is $DAY_OF_WEEK! Really, it is ${{ env.DAY_OF_WEEK }}"
+        env:
+          First_Name: Mona
