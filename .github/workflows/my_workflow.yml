@@ -19,3 +19,4 @@ jobs:
           echo "$Greeting $First_Name. Today is $DAY_OF_WEEK! Really, it is ${{ env.DAY_OF_WEEK }}"
         env:
           First_Name: Mona
+      - run: echo "Day of week is $DAY_OF_WEEK!"
