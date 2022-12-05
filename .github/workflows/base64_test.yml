@@ -10,7 +10,7 @@ jobs:
         env:
           README_BASE64: ${{ secrets.README_BASE64 }}
         run: |
-          echo $README_BASE64 | base64 --decode > test/test.base64
+          echo $env:README_BASE64 | base64 --decode > test/test.base64
       - name: Show certificate information
         run: |
           cat test/test.base64
