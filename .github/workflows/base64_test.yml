@@ -1,0 +1,18 @@
+name: Test Base64 secret
+on:
+  push:
+jobs:
+  decode-secret:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Retrieve the secret and decode it to a file
+        env:
+          README_BASE64: ${{ secrets.README_BASE64 }}
+        run: |
+          echo $README_BASE64 | base64 --decode > test/test.base64
+      - name: Show certificate information
+        run: |
+          cat test/test.base64
+          shasum test/README.md
+          shasum test/test.base64
