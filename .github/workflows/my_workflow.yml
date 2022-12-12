@@ -5,7 +5,7 @@ on:
   - workflow_dispatch
 jobs:
   dockerfiletest:
-    runs-on: ubunty-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: nohomers/no-homers-hello-world-docker-action@entrypoint-injection-test
         with:
