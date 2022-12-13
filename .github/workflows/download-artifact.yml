@@ -8,9 +8,9 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/download-artifact@v3
-        with:
-          name: Test artifact
+      #- uses: actions/download-artifact@v3
+      #  with:
+      #    name: Test artifact
       - run: |
           ls
-          cat thefile.txt
+          #cat thefile.txt
