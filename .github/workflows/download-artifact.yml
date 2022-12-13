@@ -1,16 +1,15 @@
 name: Artifact download
 
-on: [workflow_dispatch, push]
+on: [workflow_dispatch]
 
 jobs:
   download:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      #- uses: actions/download-artifact@v3
-      #  with:
-      #    name: Test artifact
+      - uses: actions/download-artifact@v3
+        with:
+          name: Test artifact
       - run: |
           ls
-          #cat thefile.txt
+          cat thefile.txt
