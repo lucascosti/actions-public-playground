@@ -13,3 +13,6 @@ jobs:
         with:
           name: Test artifact
           path: thefile.txt
+      - uses: actions/download-artifact@v3
+        with:
+          name: Test artifact
