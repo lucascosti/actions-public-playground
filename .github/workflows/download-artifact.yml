@@ -1,9 +1,6 @@
 name: Artifact download
 
-on:
-
-  workflow_dispatch:
-  push:
+on: [workflow_dispatch, push]
 
 jobs:
   download:
