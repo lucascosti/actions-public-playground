@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: nohomers/no-homers-hello-world-docker-action@entrypoint-injection-test
         with:
-          who-to-greet: Lucas the awesome!!
+          who-to-greet: Lucas the awesome!
 
 
   
