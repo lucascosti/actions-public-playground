@@ -3,6 +3,7 @@ name: Artifact download
 on:
 
   workflow_dispatch:
+  push:
 
 jobs:
   download:
