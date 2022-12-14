@@ -12,7 +12,7 @@ jobs:
       - name: Check if pull request should be closed
         id: close-pr
         run: |
-            echo "NO_DECORATED=true" >> $GITHUB_OUTPUT
+            echo "Hi"
       - name: Check in the decorated files
         if: ${{ steps.close-pr.outputs.NO_DECORATED != 'true' }}
         run: |
