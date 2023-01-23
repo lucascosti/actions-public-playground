@@ -2,15 +2,21 @@ name: New include
 on: [push, pull_request]
 jobs:
   job1:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [12]
-        os: [macos-latest, windows-latest, ubuntu-18.04]
+        fruit: [apple, pear]
+        animal: [cat, dog]
         include:
-          - node: 13
-            os: ubuntu-18.04
-            experimental: true
+          - color: green
+          - color: pink
+            animal: cat
+          - fruit: apple
+            shape: circle
+          - fruit: banana
+          - fruit: banana
+            animal: cat
+
     steps:
       - run: echo hi!
 
